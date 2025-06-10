@@ -1,3 +1,5 @@
+let contador = 0;
+
 function alterarStatus(id) {
     let gameClicado = document.getElementById(`game-${id}`);
     let capaGame = gameClicado.querySelector('.dashboard__item__img');
@@ -13,15 +15,23 @@ function alterarStatus(id) {
             capaGame.classList.remove('dashboard__item__img--rented');
             botao.classList.remove('dashboard__item__button--return');
             botao.textContent = 'Alugar';
-        } else if(confirmacao == 'n' || confirmacao == 'N') {
+        } else if (confirmacao == 'n' || confirmacao == 'N') {
             return;
         }
 
 
     } else {
+        contador = contador + 1;
         capaGame.classList.add('dashboard__item__img--rented');
         botao.classList.add('dashboard__item__button--return');
         botao.textContent = 'Devolver';
+        imprimirAlugueis(contador);
     }
+}
 
+function imprimirAlugueis(contador) {
+
+    let mensagem = contador > 1 ? `${contador} jogos foram alugados.` : `${contador} jogo foi alugado.`
+
+    console.log(mensagem);
 }
