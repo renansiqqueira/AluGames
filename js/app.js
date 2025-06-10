@@ -1,25 +1,18 @@
 function alterarStatus(id) {
+let gameClicado = document.getElementById(`game-${id}`);
+let capaGame = gameClicado.querySelector('.dashboard__item__img');
+let nomeGame = gameClicado.querySelector('.dashboard__item__name');
+let botao = gameClicado.querySelector('.dashboard__item__button');
 
-    if (id == 1) {
-        let capaJogo1 = document.getElementById('capaMonopoly');
-        let botaoAlugar = document.getElementById('alugarMonopoly');
+if(capaGame.classList.contains('dashboard__item__img--rented')){
+    capaGame.classList.remove('dashboard__item__img--rented');
+    botao.classList.remove('dashboard__item__button--return');
+    botao.textContent = 'Alugar';
 
-
-        botaoAlugar.classList.add('dashboard__item__button--return');
-        botaoAlugar.classList.remove('dashboard__item__button');
-        botaoAlugar.innerHTML = 'Devolver';
-
-        capaJogo1.classList.add('dashboard__item__img--rented');
-    }else if(id == 2){
-        let capaJogo2 = document.getElementById('capaTtr');
-        let botaoAlugar = document.getElementById('alugarTtr');
-
-
-        botaoAlugar.classList.add('dashboard__item__button--return');
-        botaoAlugar.classList.remove('dashboard__item__button');
-        botaoAlugar.innerHTML = 'Devolver';
-
-        capaJogo2.classList.add('dashboard__item__img--rented');
-    }
+}else{
+    capaGame.classList.add('dashboard__item__img--rented');
+    botao.classList.add('dashboard__item__button--return');
+    botao.textContent = 'Devolver';
+}
 
 }
