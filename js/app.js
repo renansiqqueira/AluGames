@@ -9,19 +9,20 @@ function alterarStatus(id) {
 
     if (capaGame.classList.contains('dashboard__item__img--rented')) {
 
-        //Confirmação de devolução
+        //Confirmação de devolução - Poderia usar o confirm()
         let confirmacao = prompt('Deseja confirmar devolução (S/N)?');
         if (confirmacao == 's' || confirmacao == 'S') {
             capaGame.classList.remove('dashboard__item__img--rented');
             botao.classList.remove('dashboard__item__button--return');
             botao.textContent = 'Alugar';
+            contador--;
+            imprimirAlugueis(contador);
         } else if (confirmacao == 'n' || confirmacao == 'N') {
             return;
         }
 
-
     } else {
-        contador = contador + 1;
+        contador++;
         capaGame.classList.add('dashboard__item__img--rented');
         botao.classList.add('dashboard__item__button--return');
         botao.textContent = 'Devolver';
@@ -30,8 +31,6 @@ function alterarStatus(id) {
 }
 
 function imprimirAlugueis(contador) {
-
-    let mensagem = contador > 1 ? `${contador} jogos foram alugados.` : `${contador} jogo foi alugado.`
-
+    let mensagem = `Jogos alugados: ${contador}`
     console.log(mensagem);
 }
